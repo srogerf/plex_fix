@@ -5,5 +5,6 @@ import (
 )
 
 func main() {
-	file_scan.List("x:/video/downloaded/television/")
+	//file_scan.List("x:/video/downloaded/television/")
+	file_scan.List("/mnt/x/video/downloaded/television/")
 }
