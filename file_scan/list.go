@@ -5,18 +5,13 @@ import (
 	"log"
 )
 
-func init() {
-
-}
-
-func List(root_dir string) int {
+func List(root_dir string) (count int) {
 	log.Println(root_dir)
 	files, err := ioutil.ReadDir(root_dir)
 	if err != nil {
 		log.Fatal(err)
 	}
-	count := 0
-	items := 0
+	count, items := 0, 0
 
 	for _, f := range files {
 		//log.Printf("scan: >%s\n", f.Name())
@@ -24,15 +19,11 @@ func List(root_dir string) int {
 			items = List(root_dir + "/" + f.Name())
 		} else {
 			items = 0
-			log.Printf("its a file: %s\n", f.Name())
+			GuessMetadata(f, root_dir)
 			count++
 		}
 		count += items
 	}
 	log.Printf("Counted %d filesi in %s\n", count, root_dir)
-	return count
+	return
 }
-
-//guess show name
-
-//get file name
