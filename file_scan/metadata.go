@@ -13,12 +13,13 @@ type Meta struct {
 	season    string
 }
 
-func GuessMetadata(file os.FileInfo, path string) {
+func GuessMetadata(file os.FileInfo, path string) *Meta {
 	ext := filepath.Ext(file.Name())
 	switch ext {
 	case `.mp4`:
-		GuessMp4(file, path)
+		return GuessMp4(file, path)
 	default:
 		//log.Printf("no scanner %s type %v\n", file.Name(), ext)
+		return nil
 	}
 }

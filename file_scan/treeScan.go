@@ -16,7 +16,7 @@ func ScanTree(path string) *Meta {
 	for dirIdx, dir := range dirs {
 		if dir == "television" {
 			result.videoType = "television"
-			result.show = dirs[dirIdx+1]
+			result.Show = dirs[dirIdx+1]
 			result.season = dirs[dirIdx+2]
 			result.name = dirs[dirIdx+3]
 		}

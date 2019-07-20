@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 )
 
-type ProcessMetadata func(meta Meta)
+type ProcessMetadata func(meta *Meta)
 
 func List(root_dir string, handler ProcessMetadata) (count int) {
 	log.Println(root_dir)
@@ -21,12 +21,13 @@ func List(root_dir string, handler ProcessMetadata) (count int) {
 			items = List(root_dir+"/"+f.Name(), handler)
 		} else {
 			items = 0
-			GuessMetadata(f, root_dir)
+			data := GuessMetadata(f, root_dir)
+
+			handler(data)
 			count++
 		}
 		count += items
 	}
-	handler()
 	log.Printf("Counted %d filesi in %s\n", count, root_dir)
 	return
 }

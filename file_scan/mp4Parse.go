@@ -5,8 +5,9 @@ import (
 	"os"
 )
 
-func GuessMp4(file os.FileInfo, path string) {
+func GuessMp4(file os.FileInfo, path string) *Meta {
 	log.Printf("its a file: %v\n", file.Name())
 	videoMeta := ScanTree(path + "/" + file.Name())
-	log.Printf("Video: %s", videoMeta.show)
+	log.Printf("Video: %s", videoMeta.Show)
+	return videoMeta
 }
