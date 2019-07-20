@@ -2,20 +2,24 @@
 package file_scan
 
 import (
-	"log"
+	log "github.com/sirupsen/logrus"
 	"path/filepath"
 	"strings"
 )
 
 // parse given path and figure out show
-func ScanTree(path string) {
+func ScanTree(path string) *Meta {
+	log.Printf("scanning %s\n", path)
+	result := new(Meta)
 	indepPath := filepath.FromSlash(path)
 	dirs := strings.Split(indepPath, "/")
 	for dirIdx, dir := range dirs {
 		if dir == "television" {
-			log.Printf("tv show---> %v\n", dirs[dirIdx+1])
-			log.Printf("   season---> %v\n", dirs[dirIdx+2])
-			log.Printf("   episode---> %v\n", dirs[dirIdx+3])
+			result.videoType = "television"
+			result.show = dirs[dirIdx+1]
+			result.season = dirs[dirIdx+2]
+			result.name = dirs[dirIdx+3]
 		}
 	}
+	return result
 }

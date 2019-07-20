@@ -1,11 +1,13 @@
 package file_scan
 
 import (
+	log "github.com/sirupsen/logrus"
 	"io/ioutil"
-	"log"
 )
 
-func List(root_dir string) (count int) {
+type ProcessMetadata func(meta Meta)
+
+func List(root_dir string, handler ProcessMetadata) (count int) {
 	log.Println(root_dir)
 	files, err := ioutil.ReadDir(root_dir)
 	if err != nil {
@@ -16,7 +18,7 @@ func List(root_dir string) (count int) {
 	for _, f := range files {
 		//log.Printf("scan: >%s\n", f.Name())
 		if f.IsDir() {
-			items = List(root_dir + "/" + f.Name())
+			items = List(root_dir+"/"+f.Name(), handler)
 		} else {
 			items = 0
 			GuessMetadata(f, root_dir)
@@ -24,6 +26,7 @@ func List(root_dir string) (count int) {
 		}
 		count += items
 	}
+	handler()
 	log.Printf("Counted %d filesi in %s\n", count, root_dir)
 	return
 }

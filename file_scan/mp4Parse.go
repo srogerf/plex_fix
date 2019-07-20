@@ -1,11 +1,12 @@
 package file_scan
 
 import (
-	"log"
+	log "github.com/sirupsen/logrus"
 	"os"
 )
 
 func GuessMp4(file os.FileInfo, path string) {
 	log.Printf("its a file: %v\n", file.Name())
-	ScanTree(path + "/" + file.Name())
+	videoMeta := ScanTree(path + "/" + file.Name())
+	log.Printf("Video: %s", videoMeta.show)
 }
