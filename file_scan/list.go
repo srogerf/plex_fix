@@ -22,7 +22,6 @@ func List(root_dir string, handler ProcessMetadata) (count int) {
 		} else {
 			items = 0
 			data := GuessMetadata(f, root_dir)
-
 			handler(data)
 			count++
 		}

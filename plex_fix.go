@@ -23,10 +23,11 @@ func main() {
 
 	//handler for returning metadata
 	processMetadata := func(meta *file_scan.Meta) {
-		log.Printf("Series::::\n", meta)
-		if meta != nil {
-			log.Printf("Series::::%s\n", meta.Show)
+		log.Printf("Series>>>::::%v\n", meta)
+		if meta == nil {
+			return
 		}
+		log.Printf("Series::::%s\n", meta.Show)
 	}
 
 	//scan the files
