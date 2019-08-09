@@ -6,7 +6,8 @@ package main
 import (
 	"flag"
 	log "github.com/sirupsen/logrus"
-	"github.com/srogerf/plex_fix/file_scan"
+	"github.com/srogerf/plex_fix/scanner"
+	"github.com/srogerf/plex_fix/extractor"
 )
 
 func main() {
@@ -21,16 +22,8 @@ func main() {
 		log.SetLevel(log.ErrorLevel)
 	}
 
-	//handler for returning metadata
-	processMetadata := func(meta *file_scan.Meta) {
-		if meta == nil {
-			return
-		}
-		log.Printf("Series::::%s\n", meta.Show)
-	}
-
 	//scan the files
-	count := file_scan.List(*path, processMetadata)
+	count := scanner.List(*path, extractor.Process)
 
 	log.Printf("Directory %s has %d items", *path, count)
 }

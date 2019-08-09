@@ -1,5 +1,5 @@
 // scan the path the file is in for additional metadata
-package file_scan
+package scanner
 
 import (
 	log "github.com/sirupsen/logrus"

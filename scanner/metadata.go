@@ -1,4 +1,4 @@
-package file_scan
+package scanner
 
 import (
 	"os"
