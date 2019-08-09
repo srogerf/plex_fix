@@ -1,4 +1,4 @@
-package media_data
+package data
 
 /**
   represent a basic media

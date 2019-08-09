@@ -5,20 +5,21 @@ import (
 	log "github.com/sirupsen/logrus"
 	"path/filepath"
 	"strings"
+			"github.com/srogerf/plex_fix/data"
 )
 
 // parse given path and figure out show
-func ScanTree(path string) *Meta {
+func ScanTree(path string) *data.MediaData {
 	log.Printf("scanning %s\n", path)
-	result := new(Meta)
+	result := new(data.MediaData)
 	indepPath := filepath.FromSlash(path)
 	dirs := strings.Split(indepPath, "/")
 	for dirIdx, dir := range dirs {
 		if dir == "television" {
-			result.videoType = "television"
+			result.VideoType = "television"
 			result.Show = dirs[dirIdx+1]
-			result.season = dirs[dirIdx+2]
-			result.name = dirs[dirIdx+3]
+			result.Season = dirs[dirIdx+2]
+			result.Name = dirs[dirIdx+3]
 		}
 	}
 	return result

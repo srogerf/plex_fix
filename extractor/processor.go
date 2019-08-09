@@ -2,10 +2,10 @@ package extractor
 
 import (
     "log"
-	"github.com/srogerf/plex_fix/scanner"
+    		"github.com/srogerf/plex_fix/data"
 )
 
-func Process(meta *scanner.Meta) {
+func Process(meta *data.MediaData) {
 		if meta == nil {
 			return
 		}

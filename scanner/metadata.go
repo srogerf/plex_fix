@@ -3,17 +3,10 @@ package scanner
 import (
 	"os"
 	"path/filepath"
+		"github.com/srogerf/plex_fix/data"
 )
 
-type Meta struct {
-	name      string
-	videoType string
-	Show      string
-	episode   int
-	season    string
-}
-
-func GuessMetadata(file os.FileInfo, path string) *Meta {
+func GuessMetadata(file os.FileInfo, path string) *data.MediaData {
 	ext := filepath.Ext(file.Name())
 	switch ext {
 	case `.mp4`:

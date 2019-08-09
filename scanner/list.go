@@ -2,12 +2,10 @@ package scanner
 
 import (
 	log "github.com/sirupsen/logrus"
+	"github.com/srogerf/plex_fix/data"
 	"io/ioutil"
 )
-
-type ProcessMetadata func(meta *Meta)
-
-func List(root_dir string, handler ProcessMetadata) (count int) {
+func List(root_dir string, handler data.ProcessMetadata) (count int) {
 	log.Println(root_dir)
 	files, err := ioutil.ReadDir(root_dir)
 	if err != nil {
