@@ -1,13 +1,17 @@
 package extractor
 
 import (
-    "log"
-    		"github.com/srogerf/plex_fix/data"
+	"github.com/srogerf/plex_fix/data"
+	"log"
 )
 
+//process file given the metadata
 func Process(meta *data.MediaData) {
-		if meta == nil {
-			return
-		}
-		log.Printf("Series::::%s\n", meta.Show)
+	if meta == nil {
+		return
+	}
+
+	//figure out correct name
+	log.Printf("Series::::%s\n", meta.Show)
+	log.Printf("Series::::%s\n", meta.Show)
 }

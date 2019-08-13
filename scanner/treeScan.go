@@ -3,9 +3,9 @@ package scanner
 
 import (
 	log "github.com/sirupsen/logrus"
+	"github.com/srogerf/plex_fix/data"
 	"path/filepath"
 	"strings"
-			"github.com/srogerf/plex_fix/data"
 )
 
 // parse given path and figure out show
@@ -16,10 +16,13 @@ func ScanTree(path string) *data.MediaData {
 	dirs := strings.Split(indepPath, "/")
 	for dirIdx, dir := range dirs {
 		if dir == "television" {
+			left_values := len(dirs) - dirIdx
 			result.VideoType = "television"
 			result.Show = dirs[dirIdx+1]
 			result.Season = dirs[dirIdx+2]
-			result.Name = dirs[dirIdx+3]
+			if left_values > 3 {
+				result.Name = dirs[dirIdx+3]
+			}
 		}
 	}
 	return result

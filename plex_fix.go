@@ -6,8 +6,8 @@ package main
 import (
 	"flag"
 	log "github.com/sirupsen/logrus"
-	"github.com/srogerf/plex_fix/scanner"
 	"github.com/srogerf/plex_fix/extractor"
+	"github.com/srogerf/plex_fix/scanner"
 )
 
 func main() {
@@ -26,4 +26,5 @@ func main() {
 	count := scanner.List(*path, extractor.Process)
 
 	log.Printf("Directory %s has %d items", *path, count)
+
 }

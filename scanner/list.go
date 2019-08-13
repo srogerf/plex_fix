@@ -5,6 +5,7 @@ import (
 	"github.com/srogerf/plex_fix/data"
 	"io/ioutil"
 )
+
 func List(root_dir string, handler data.ProcessMetadata) (count int) {
 	log.Println(root_dir)
 	files, err := ioutil.ReadDir(root_dir)
@@ -19,12 +20,12 @@ func List(root_dir string, handler data.ProcessMetadata) (count int) {
 			items = List(root_dir+"/"+f.Name(), handler)
 		} else {
 			items = 0
-			data := GuessMetadata(f, root_dir)
-			handler(data)
+			m_data := GuessMetadata(f, root_dir)
+			handler(m_data)
 			count++
 		}
 		count += items
 	}
 	log.Printf("Counted %d filesi in %s\n", count, root_dir)
-	return
+	return count
 }
