@@ -1,4 +1,3 @@
 .idea/*
-*.imp
+*.iml
 *.exe
-plex_fix.iml

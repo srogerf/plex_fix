@@ -13,5 +13,5 @@ func Process(meta *data.MediaData) {
 
 	//figure out correct name
 	log.Printf("Series::::%s\n", meta.Show)
-	log.Printf("Series::::%s\n", meta.Show)
+	log.Printf("Name::::%s\n", meta.Name)
 }
